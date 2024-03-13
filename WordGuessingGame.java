@@ -9,12 +9,15 @@ public class WordGuessingGame {
     private String guessedWord;
     private int numberOfTries;
     private InputReader reader;
+    private WordGenerator wordGenerator;
 
     public WordGuessingGame() {
         this.hiddenWord = "abc";
         this.guessedWord = "___";
         this.numberOfTries = 0;
         this.reader = new InputReader();
+        this.wordGenerator = new WordGenerator();
+        hiddenWord = wordGenerator.generateWord();
     }
 
     public String getHiddenWord () {
@@ -61,5 +64,12 @@ public class WordGuessingGame {
 
     private void showResult () {
         System.out.println("Número de tentativas: " +numberOfTries);
+    }
+
+    public void initializeGuessedWord () {
+        guessedWord = "";
+        for (int i = 0; i <= hiddenWord.length(); i++) {
+            guessedWord += "_";
+        }
     }
 }
